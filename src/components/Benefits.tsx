@@ -1,5 +1,5 @@
 
-import { ShieldCheck, Truck, Tools, Clock } from 'lucide-react';
+import { ShieldCheck, Truck, Wrench, Clock } from 'lucide-react';
 
 type Benefit = {
   icon: React.ReactNode;
@@ -19,7 +19,7 @@ const benefits: Benefit[] = [
     description: 'Доставляем двери по Москве и области. Возможна доставка по всей России.'
   },
   {
-    icon: <Tools size={48} className="text-primary" />,
+    icon: <Wrench size={48} className="text-primary" />,
     title: 'Профессиональный монтаж',
     description: 'Наши специалисты имеют большой опыт установки дверей любой сложности.'
   }
