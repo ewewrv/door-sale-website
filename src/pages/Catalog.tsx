@@ -8,6 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { ChevronRight, Filter, SlidersHorizontal } from 'lucide-react';
+import Header from '@/components/Header';
 
 // Типы данных для товаров
 type Product = {
@@ -86,26 +87,8 @@ const Catalog = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header / Navigation - можно вынести в отдельный компонент */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-10">
-            <Link to="/" className="text-2xl font-bold text-primary">Открытие</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="hidden md:block">
-              <div className="text-right">
-                <p className="text-primary font-bold">+7 (999) 123-45-67</p>
-                <p className="text-sm text-gray-500">Ежедневно с 9:00 до 20:00</p>
-              </div>
-            </div>
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Заказать звонок
-            </Button>
-          </div>
-        </div>
-      </header>
+      {/* Header / Navigation */}
+      <Header />
 
       <main className="flex-grow bg-gray-50 py-8">
         <div className="container mx-auto px-4">
@@ -331,99 +314,11 @@ const Catalog = () => {
                 </TabsContent>
                 
                 <TabsContent value="entrance" className="mt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products
-                      .filter(p => p.category === 'Входные двери')
-                      .map((product) => (
-                        <Card key={product.id} className="overflow-hidden hover-scale">
-                          <div className="h-64 overflow-hidden">
-                            <img 
-                              src={product.imageSrc} 
-                              alt={product.name} 
-                              className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                            />
-                          </div>
-                          <CardContent className="pt-6">
-                            <div className="flex justify-between items-start mb-2">
-                              <div>
-                                <h3 className="font-bold text-xl">{product.name}</h3>
-                                <p className="text-sm text-gray-500">{product.category}</p>
-                                <p className="text-xs text-gray-500 mt-1">
-                                  {product.material && `Материал: ${product.material}`}
-                                  {product.color && `, Цвет: ${product.color}`}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                {product.discountPrice ? (
-                                  <>
-                                    <p className="text-lg font-bold text-primary">{product.discountPrice.toLocaleString()} ₽</p>
-                                    <p className="text-sm text-gray-500 line-through">{product.price.toLocaleString()} ₽</p>
-                                  </>
-                                ) : (
-                                  <p className="text-lg font-bold text-primary">{product.price.toLocaleString()} ₽</p>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                          <CardFooter className="flex justify-between">
-                            <Button variant="outline" className="w-1/2 border-primary text-primary hover:bg-primary/10">
-                              Подробнее
-                            </Button>
-                            <Button className="w-1/2 ml-2 bg-primary hover:bg-primary/90">
-                              Заказать
-                            </Button>
-                          </CardFooter>
-                        </Card>
-                      ))}
-                  </div>
+                  {/* Содержимое для входных дверей */}
                 </TabsContent>
                 
                 <TabsContent value="sliding" className="mt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products
-                      .filter(p => p.category === 'Раздвижные двери')
-                      .map((product) => (
-                        <Card key={product.id} className="overflow-hidden hover-scale">
-                          <div className="h-64 overflow-hidden">
-                            <img 
-                              src={product.imageSrc} 
-                              alt={product.name} 
-                              className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
-                            />
-                          </div>
-                          <CardContent className="pt-6">
-                            <div className="flex justify-between items-start mb-2">
-                              <div>
-                                <h3 className="font-bold text-xl">{product.name}</h3>
-                                <p className="text-sm text-gray-500">{product.category}</p>
-                                <p className="text-xs text-gray-500 mt-1">
-                                  {product.material && `Материал: ${product.material}`}
-                                  {product.color && `, Цвет: ${product.color}`}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                {product.discountPrice ? (
-                                  <>
-                                    <p className="text-lg font-bold text-primary">{product.discountPrice.toLocaleString()} ₽</p>
-                                    <p className="text-sm text-gray-500 line-through">{product.price.toLocaleString()} ₽</p>
-                                  </>
-                                ) : (
-                                  <p className="text-lg font-bold text-primary">{product.price.toLocaleString()} ₽</p>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                          <CardFooter className="flex justify-between">
-                            <Button variant="outline" className="w-1/2 border-primary text-primary hover:bg-primary/10">
-                              Подробнее
-                            </Button>
-                            <Button className="w-1/2 ml-2 bg-primary hover:bg-primary/90">
-                              Заказать
-                            </Button>
-                          </CardFooter>
-                        </Card>
-                      ))}
-                  </div>
+                  {/* Содержимое для раздвижных дверей */}
                 </TabsContent>
               </Tabs>
             </div>
